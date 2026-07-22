@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vishwa Patel — Software Engineer</title>
+<meta name="description" content="Backend engineer. Built extraction pipelines and reliability tooling at Casepoint. MS Computer Science at USC, graduating Dec 2027.">
+
+<!-- ============================================================
+     Deploy checklist:
+       1. Put your resume PDF beside this file, named "Resume_VishwaPatel.pdf"
+       2. When TechHire / Speed Medilane have live demos, add a
+          <a class="lk" href="URL" target="_blank" rel="noopener noreferrer">Live demo</a> beside each
+          "View source" button in the projects section
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="mark">vishwa<b>.</b>patel</div>
+    <nav class="top-nav">
+      <a href="#work">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<div class="wrap hero">
+  <h1>I build the <em>pipelines</em> that move data through a product.</h1>
+  <p class="lede">
+    I spent two years at Casepoint building backend systems for a legal-tech
+    platform — repairing corrupted files, parallelizing throughput, and adding the
+    status tracking that told teams where any document sat. Currently pursuing an MS in
+    Computer Science at USC and looking for backend roles and internships.
+  </p>
+
+  <div class="meta-row">
+    <span><i class="dot"></i>Los Angeles, CA</span>
+    <span><i class="dot"></i>MS Computer Science, USC — graduating Dec 2027</span>
+    <span><i class="dot"></i>Open to SWE roles &amp; internships</span>
+  </div>
+
+  <div class="cta-row">
+    <a class="btn btn-solid" href="#work">See the work →</a>
+    <a class="btn btn-line" href="Resume_VishwaPatel.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+  </div>
+
+  <!-- SIGNATURE ELEMENT: the pipeline this site is named after -->
+  <div class="pipe-frame">
+    <div class="pipe-cap">
+      <span>Extraction pipeline — <b>the shape of most of my work</b></span>
+      <span>ingest → serve</span>
+    </div>
+    <div class="pipe">
+      <div class="rec" aria-hidden="true"></div>
+      <div class="rec" aria-hidden="true"></div>
+      <div class="rec" aria-hidden="true"></div>
+      <div class="rec" aria-hidden="true"></div>
+
+      <div class="stage">
+        <div class="node" aria-hidden="true"></div>
+        <span class="stage-name">Ingest</span>
+        <span class="stage-note">scrape / upload</span>
+      </div>
+      <div class="stage">
+        <div class="node" aria-hidden="true"></div>
+        <span class="stage-name">Repair</span>
+        <span class="stage-note">retry, recover</span>
+      </div>
+      <div class="stage">
+        <div class="node" aria-hidden="true"></div>
+        <span class="stage-name">Extract</span>
+        <span class="stage-note">parallel workers</span>
+      </div>
+      <div class="stage">
+        <div class="node" aria-hidden="true"></div>
+        <span class="stage-name">Validate</span>
+        <span class="stage-note">drop bad records</span>
+      </div>
+      <div class="stage">
+        <div class="node" aria-hidden="true"></div>
+        <span class="stage-name">Store</span>
+        <span class="stage-note">dedupe, index</span>
+      </div>
+      <div class="stage">
+        <div class="node" aria-hidden="true"></div>
+        <span class="stage-name">Serve</span>
+        <span class="stage-note">API / UI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PROJECTS ================= -->
+<section id="work">
+  <div class="wrap">
+    <p class="eyebrow">Selected projects</p>
+    <h2 class="section-title">Things I built end to end.</h2>
+
+    <article class="proj rv">
+      <div class="proj-head">
+        <h3>TechHire</h3>
+        <span class="proj-when">2026</span>
+      </div>
+      <p class="proj-role">AI-powered job board for CS students and new grads</p>
+      <p>
+        A scraper aggregates software and internship listings, normalizes them into a
+        typed schema, and validates every apply link before it reaches the database.
+        On top of that sits a filterable React board and two AI features: a three-model
+        summarization pipeline that condenses a posting into one readable brief, and a
+        resume checker that scores fit against a job description and rewrites weak bullets.
+      </p>
+
+      <div class="facts">
+        <div class="fact"><b>200+</b><span>live postings</span></div>
+        <div class="fact"><b>~7ms</b><span>search API response</span></div>
+        <div class="fact"><b>92%</b><span>auto-parsed to schema</span></div>
+        <div class="fact"><b>3</b><span>models per summary</span></div>
+      </div>
+
+      <ul class="tags">
+        <li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>SQLAlchemy</li>
+        <li>React</li><li>Vite</li><li>Tailwind</li><li>React Query</li>
+        <li>Docker</li><li>Groq / Llama</li>
+      </ul>
+
+      <div class="links">
+        <a class="lk lk-primary" href="https://github.com/vishwapatel24051/TechHire" target="_blank" rel="noopener noreferrer">View source</a>
+      </div>
+      <p class="caveat">
+        Resume scoring was validated with controlled test cases: a matching backend
+        resume scored 85/100 against a Java/Spring role, an unrelated design resume
+        scored 0 — an 85-point spread on the same posting.
+      </p>
+    </article>
+
+    <article class="proj rv">
+      <div class="proj-head">
+        <h3>Speed Medilane</h3>
+        <span class="proj-when">2022 · rebuilt 2026</span>
+      </div>
+      <p class="proj-role">Cross-platform medicine ordering and pharmacy app</p>
+      <p>
+        A Flutter app for searching medicines, placing preorders, scheduling daily
+        medication reminders, and finding nearby pharmacies. The interesting part is the
+        auth design: the anon key ships inside the compiled web bundle, so the client
+        can't be trusted with table access. Registration and login go through
+        <code>SECURITY DEFINER</code> Postgres functions instead, with Row Level Security
+        on and all direct grants revoked.
+      </p>
+
+      <ul class="tags">
+        <li>Flutter</li><li>Dart 3</li><li>Supabase</li><li>PostgreSQL</li>
+        <li>Row Level Security</li><li>Geolocator</li><li>Local notifications</li>
+      </ul>
+
+      <div class="links">
+        <a class="lk lk-primary" href="https://github.com/vishwapatel24051/Speed_Medilane" target="_blank" rel="noopener noreferrer">View source</a>
+      </div>
+      <p class="caveat">
+        Distance ranking uses real device location; the pharmacy list itself is a curated
+        sample set rather than a live places directory.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="wrap">
+    <p class="eyebrow">Experience</p>
+    <h2 class="section-title">Where I've worked.</h2>
+
+    <div class="role rv">
+      <div class="role-when">May 2025 — Jun 2025</div>
+      <div>
+        <h3>Software Engineer</h3>
+        <p class="org">Casepoint · Gujarat, India</p>
+        <ul>
+          <li>Added custom field selection to legal hold reporting, cutting report generation time by 30% and letting clients configure their own reports.</li>
+          <li>Owned 10–20 high-priority production tickets a week on extraction and processing failures — root-cause analysis through to the code fix.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role rv">
+      <div class="role-when">Jul 2023 — May 2025</div>
+      <div>
+        <h3>Associate Software Engineer</h3>
+        <p class="org">Casepoint · Gujarat, India</p>
+        <ul>
+          <li>Built a PST repair service with automated recovery, retry logic, and concurrency control, reducing manual intervention by 50–70%.</li>
+          <li>Redesigned extraction for parallel processing — roughly 90% more throughput than the single-threaded version.</li>
+          <li>Added Redis-based status tracking across 6+ pipeline stages so teams could see where any document sat in real time.</li>
+          <li>Upgraded core extraction libraries for broader format support, cutting extraction errors and failures by 40%+.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role rv">
+      <div class="role-when">Jan 2023 — Jun 2023</div>
+      <div>
+        <h3>Software Engineer Intern</h3>
+        <p class="org">Casepoint · Gujarat, India</p>
+        <ul>
+          <li>Built a desktop recruitment system in .NET MVC and PostgreSQL — 20+ screens, Kendo UI components, and RabbitMQ for internal messaging.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role rv">
+      <div class="role-when">Jun 2022 — Jul 2022</div>
+      <div>
+        <h3>Software Engineering Intern, Backend</h3>
+        <p class="org">Amiseq · Pune, India</p>
+        <ul>
+          <li>Built 10+ REST endpoints in Spring Boot and PostgreSQL as modular services within a microservices architecture.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="wrap">
+    <p class="eyebrow">Toolkit</p>
+    <h2 class="section-title">What I work with.</h2>
+    <div class="skills rv">
+      <div class="skill">
+        <h3>Languages</h3>
+        <p>Python · Java · C# · C++ · C · JavaScript · Dart · HTML · CSS</p>
+      </div>
+      <div class="skill">
+        <h3>Backend</h3>
+        <p>FastAPI · Spring Boot · Spring MVC · REST APIs · .NET MVC · Microservices</p>
+      </div>
+      <div class="skill">
+        <h3>Data</h3>
+        <p>PostgreSQL · MySQL · SQLite · Redis · Elasticsearch · Cassandra · HBase · SQLAlchemy</p>
+      </div>
+      <div class="skill">
+        <h3>Infrastructure</h3>
+        <p>Docker · RabbitMQ · Git · Supabase</p>
+      </div>
+      <div class="skill">
+        <h3>Frontend &amp; Mobile</h3>
+        <p>React · Vite · Tailwind · React Query · Flutter · jQuery</p>
+      </div>
+      <div class="skill">
+        <h3>Currently learning</h3>
+        <p>LLM application patterns, multi-model synthesis, retrieval pipelines</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+  <div class="wrap">
+    <p class="eyebrow">Background</p>
+    <div class="two">
+      <div class="rv">
+        <h2 class="section-title">Education</h2>
+        <div class="entry">
+          <h3>MS, Computer Science</h3>
+          <p class="sub">University of Southern California · Jan 2026 — Dec 2027</p>
+          <p>Analysis of Algorithms, Web Technologies, Database Systems. GPA 3.66/4.</p>
+        </div>
+        <div class="entry">
+          <h3>BE, Computer Engineering</h3>
+          <p class="sub">Gujarat Technological University · 2019 — 2023</p>
+          <p>Data Structures, OOP, Theory of Computation, Compiler Design, Operating Systems. GPA 8.98/10.</p>
+        </div>
+      </div>
+      <div class="rv">
+        <h2 class="section-title">Recognition</h2>
+        <div class="entry">
+          <h3>Casepoint Excellence Award</h3>
+          <p class="sub">2024 · Sprint Delivery Standout</p>
+          <p>Awarded for sprint delivery and consistency.</p>
+        </div>
+        <div class="entry">
+          <h3>Python for Everybody</h3>
+          <p class="sub">Coursera · Specialization</p>
+          <p>Python, databases, web scraping, and data visualization.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2>Open to software engineering roles.</h2>
+    <p>
+      Backend, full-stack, or anything adjacent — I'm interested in problems that are
+      more interesting than the stack they're built on. If you're hiring, or you just
+      want to talk about any of the projects above, email is the fastest way to reach me.
+    </p>
+    <div class="contact-links">
+      <a class="cl" href="mailto:vishwasa@usc.edu">vishwasa@usc.edu</a>
+      <a class="cl" href="https://www.linkedin.com/in/vishwapatel2405/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="cl" href="https://github.com/vishwapatel24051" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="cl" href="Resume_VishwaPatel.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Vishwa Patel — Los Angeles, CA</span>
+    <span>Built by hand. No template.</span>
+  </div>
+</footer>
+
+
+<script src="app.js"></script>
+</body>
+</html>
