@@ -122,8 +122,8 @@
   function renderProjects() {
     var grid = document.getElementById('project-grid');
     if (!grid) return;
-    data.projects.forEach(function (p) {
-      var card = el('article', 'card rv');
+    data.projects.forEach(function (p, cardIndex) {
+      var card = el('article', 'card rv accent-' + (cardIndex % 3));
       card.dataset.stack = p.stack.join('|');
 
       var head = el('div', 'card-head');
@@ -155,7 +155,9 @@
 
       var stack = el('div', 'card-stack');
       p.stack.forEach(function (s, i) {
-        stack.appendChild(el('span', 'tag ' + tagColors[i % tagColors.length], s));
+        var tagEl = el('span', 'tag ' + tagColors[i % tagColors.length], s);
+        tagEl.style.setProperty('--i', i);
+        stack.appendChild(tagEl);
       });
       card.appendChild(stack);
 
@@ -246,6 +248,7 @@
       group.items.forEach(function (item, i) {
         var span = el('span', '', item);
         span.style.color = 'var(--' + ['violet', 'pink', 'cyan', 'amber', 'lime'][i % 5] + ')';
+        span.style.setProperty('--i', i);
         pills.appendChild(span);
       });
       box.appendChild(pills);
@@ -351,6 +354,22 @@
     var a = el('a', '', data.email);
     a.href = 'mailto:' + data.email;
     mail.appendChild(a);
+
+    var copyBtn = el('button', 'copy-email', 'Copy');
+    copyBtn.type = 'button';
+    copyBtn.addEventListener('click', function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(data.email).then(function () {
+          showToast('Email copied to clipboard');
+        }).catch(function () {
+          showToast('Could not copy — email is ' + data.email);
+        });
+      } else {
+        showToast('Email is ' + data.email);
+      }
+    });
+    mail.appendChild(copyBtn);
+
     var note = el('p', 'contact-note', 'Open to software engineering roles and Summer 2027 internships. Backend, full-stack, or anything adjacent.');
     node.appendChild(mail);
     node.appendChild(note);
@@ -360,7 +379,31 @@
     var footer = document.getElementById('footer');
     if (!footer) return;
     footer.appendChild(el('span', '', data.location));
+
+    var clock = el('span', 'local-clock');
+    footer.appendChild(clock);
+
     footer.appendChild(el('span', '', '© ' + new Date().getFullYear() + ' ' + data.name));
+
+    function tick() {
+      var time = new Intl.DateTimeFormat('en-US', {
+        hour: 'numeric', minute: '2-digit', timeZone: 'America/Los_Angeles'
+      }).format(new Date());
+      clock.textContent = time + ' PT';
+    }
+    tick();
+    setInterval(tick, 15000);
+  }
+
+  function showToast(message) {
+    var toast = document.getElementById('toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(function () {
+      toast.classList.remove('show');
+    }, 2200);
   }
 
   function setupThemeToggle() {
@@ -443,6 +486,165 @@
     });
   }
 
+  function isCoarsePointer() {
+    return window.matchMedia('(pointer: coarse)').matches;
+  }
+
+  function setupSpotlight() {
+    if (reduceMotion || isCoarsePointer()) return;
+    var spot = document.getElementById('spotlight');
+    if (!spot) return;
+    document.addEventListener('mousemove', function (e) {
+      spot.style.setProperty('--sx', e.clientX + 'px');
+      spot.style.setProperty('--sy', e.clientY + 'px');
+      spot.classList.add('show');
+    });
+    document.addEventListener('mouseleave', function () {
+      spot.classList.remove('show');
+    });
+  }
+
+  function setupMagnetic() {
+    if (reduceMotion || isCoarsePointer()) return;
+    document.querySelectorAll('.btn, .filter-btn, .cmdk-trigger, .to-top').forEach(function (magnet) {
+      magnet.addEventListener('mousemove', function (e) {
+        var r = magnet.getBoundingClientRect();
+        var x = e.clientX - (r.left + r.width / 2);
+        var y = e.clientY - (r.top + r.height / 2);
+        magnet.style.transform = 'translate(' + (x * 0.25).toFixed(1) + 'px,' + (y * 0.25).toFixed(1) + 'px)';
+      });
+      magnet.addEventListener('mouseleave', function () {
+        magnet.style.transform = '';
+      });
+    });
+  }
+
+  function setupScrollCue() {
+    var cue = document.getElementById('scroll-cue');
+    if (!cue) return;
+    cue.addEventListener('click', function () {
+      var about = document.getElementById('about');
+      if (about) about.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+    function update() {
+      cue.classList.toggle('hide', window.scrollY > 120);
+    }
+    document.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
+  function setupCommandPalette() {
+    var trigger = document.getElementById('cmdk-trigger');
+    var overlay = document.getElementById('cmdk-overlay');
+    var input = document.getElementById('cmdk-input');
+    var list = document.getElementById('cmdk-list');
+    if (!trigger || !overlay || !input || !list) return;
+
+    function scrollToId(id) {
+      var section = document.getElementById(id);
+      if (section) section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    var commands = [
+      { label: 'Go to About', hint: 'section', action: function () { scrollToId('about'); } },
+      { label: 'Go to Experience', hint: 'section', action: function () { scrollToId('experience'); } },
+      { label: 'Go to Projects', hint: 'section', action: function () { scrollToId('projects'); } },
+      { label: 'Go to Numbers', hint: 'section', action: function () { scrollToId('numbers'); } },
+      { label: 'Go to Education', hint: 'section', action: function () { scrollToId('education'); } },
+      { label: 'Go to Skills', hint: 'section', action: function () { scrollToId('skills'); } },
+      { label: 'Go to Contact', hint: 'section', action: function () { scrollToId('contact'); } },
+      { label: 'Open GitHub', hint: 'link', action: function () { window.open(data.social.github, '_blank', 'noopener'); } },
+      { label: 'Open LinkedIn', hint: 'link', action: function () { window.open(data.social.linkedin, '_blank', 'noopener'); } },
+      { label: 'Open Résumé', hint: 'link', action: function () { window.open(data.social.resume, '_blank', 'noopener'); } },
+      {
+        label: 'Copy email address', hint: 'action', action: function () {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(data.email).then(function () { showToast('Email copied to clipboard'); });
+          }
+        }
+      },
+      { label: 'Toggle dark / light theme', hint: 'action', action: function () { document.getElementById('theme-toggle').click(); } }
+    ];
+
+    var activeIndex = 0;
+    var filtered = commands.slice();
+
+    function renderList() {
+      list.innerHTML = '';
+      if (!filtered.length) {
+        list.appendChild(el('div', 'cmdk-empty', 'No matching commands'));
+        return;
+      }
+      filtered.forEach(function (cmd, i) {
+        var item = el('div', 'cmdk-item' + (i === activeIndex ? ' active' : ''));
+        item.appendChild(el('span', '', cmd.label));
+        item.appendChild(el('span', 'tag', cmd.hint));
+        item.addEventListener('mouseenter', function () { activeIndex = i; renderList(); });
+        item.addEventListener('click', function () { runCommand(cmd); });
+        list.appendChild(item);
+      });
+    }
+
+    function runCommand(cmd) {
+      close();
+      cmd.action();
+    }
+
+    function open() {
+      overlay.hidden = false;
+      input.value = '';
+      filtered = commands.slice();
+      activeIndex = 0;
+      renderList();
+      setTimeout(function () { input.focus(); }, 10);
+    }
+
+    function close() {
+      overlay.hidden = true;
+    }
+
+    trigger.addEventListener('click', open);
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) close();
+    });
+
+    input.addEventListener('input', function () {
+      var q = input.value.toLowerCase();
+      filtered = commands.filter(function (c) { return c.label.toLowerCase().indexOf(q) !== -1; });
+      activeIndex = 0;
+      renderList();
+    });
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeIndex = Math.min(activeIndex + 1, filtered.length - 1);
+        renderList();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeIndex = Math.max(activeIndex - 1, 0);
+        renderList();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (filtered[activeIndex]) runCommand(filtered[activeIndex]);
+      } else if (e.key === 'Escape') {
+        close();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      var isMac = navigator.platform.toUpperCase().indexOf('MAC') !== -1;
+      var mod = isMac ? e.metaKey : e.ctrlKey;
+      if (mod && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        if (overlay.hidden) open(); else close();
+      } else if (e.key === 'Escape' && !overlay.hidden) {
+        close();
+      }
+    });
+  }
+
   renderHero();
   renderAbout();
   renderExperience();
@@ -461,4 +663,8 @@
   setupActiveNav();
   setupBackToTop();
   setupCardTilt();
+  setupSpotlight();
+  setupMagnetic();
+  setupScrollCue();
+  setupCommandPalette();
 })();
