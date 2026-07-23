@@ -4,177 +4,100 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vishwa Patel — Software Engineer</title>
-<meta name="description" content="Software engineer. Built extraction pipelines and reliability tooling at Casepoint. MS Computer Science at USC, graduating Dec 2027.">
-<meta name="theme-color" content="#0C0F14">
-
+<meta name="description" content="Software engineer building reliable data pipelines and full-stack products. MS Computer Science at USC, graduating Dec 2027.">
+<meta name="theme-color" content="#0F172A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="glow" aria-hidden="true"></div>
+<div class="progress" id="progress"></div>
 
-<nav class="top">
-  <a class="vp" href="#top">VP</a>
-  <span class="links">
-    <a href="#work">work</a>
-    <a href="#projects">projects</a>
-    <a href="#education">education</a>
-    <a href="#contact">contact</a>
-  </span>
-</nav>
+<div class="bg-blobs" aria-hidden="true">
+  <span class="blob blob-1"></span>
+  <span class="blob blob-2"></span>
+  <span class="blob blob-3"></span>
+  <span class="bg-grid"></span>
+</div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top">VP</a>
+  <nav class="nav-links" id="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#numbers">Numbers</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+    <span aria-hidden="true">◐</span>
+  </button>
+</header>
 
 <main id="top">
 
-  <!-- ================= INTRO ================= -->
-  <header class="intro">
-    <p class="stage"><i>01</i> who</p>
-    <h1>Vishwa&nbsp;Patel</h1>
-    <p class="role">Backend · data pipelines · reliability</p>
-    <p class="blurb">
-      Currently pursuing an MS in Computer Science at USC, graduating December 2027.
-      Before that, I was a Software Engineer at Casepoint, working at the core of the
-      data pipeline for a legal-tech platform. I built backend services to recover
-      corrupted files, speed up document extraction, and give teams real-time pipeline
-      visibility. Owning production support also sharpened my ability to trace vague
-      symptoms to the root cause and ship durable fixes.
-    </p>
-    <p class="ctas">
-      <a class="btn primary" href="Resume_VishwaPatel.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
-      <a class="btn" href="https://github.com/vishwapatel24051" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a class="btn" href="https://www.linkedin.com/in/vishwapatel2405/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a class="btn" href="mailto:vishwasa@usc.edu">Email</a>
-    </p>
+  <section class="hero" id="hero"><!-- rendered by app.js --></section>
 
-    <!-- signature element: the shape of the work -->
-    <div class="pipe" role="img" aria-label="Pipeline: ingest, repair, extract, validate, store, serve">
-      <span class="rec" aria-hidden="true"></span>
-      <span class="rec" aria-hidden="true"></span>
-      <span class="rec" aria-hidden="true"></span>
-      <div class="stage-node"><i></i><b>ingest</b></div>
-      <div class="stage-node"><i></i><b>repair</b></div>
-      <div class="stage-node"><i></i><b>extract</b></div>
-      <div class="stage-node"><i></i><b>validate</b></div>
-      <div class="stage-node"><i></i><b>store</b></div>
-      <div class="stage-node last"><i></i><b>serve</b></div>
-    </div>
-  </header>
+  <section class="section" id="about">
+    <p class="eyebrow">About</p>
+    <p class="about-text" id="about-text"></p>
+  </section>
 
-  <!-- ================= WORK ================= -->
-  <section id="work">
-    <p class="stage"><i>02</i> work</p>
+  <section class="section" id="experience">
+    <p class="eyebrow">Experience</p>
+    <div class="timeline" id="experience-list"></div>
+  </section>
 
-    <div class="row rv">
-      <div class="when">2025</div>
-      <div class="what">
-        <h2>Software Engineer <span>Casepoint</span></h2>
-        <p>Configurable legal-hold reporting, and weekly ownership of production extraction failures.</p>
-      </div>
-    </div>
+  <section class="section" id="projects">
+    <p class="eyebrow">Projects</p>
+    <div class="filters" id="project-filters"></div>
+    <div class="grid" id="project-grid"></div>
+  </section>
 
-    <div class="row rv">
-      <div class="when">2023—25</div>
-      <div class="what">
-        <h2>Associate Software Engineer <span>Casepoint</span></h2>
-        <p>Parallelized document extraction for <b>~90% more throughput</b>. Built a PST repair service with retry and concurrency control, plus Redis status tracking across 6+ pipeline stages.</p>
-      </div>
-    </div>
-
-    <div class="row rv">
-      <div class="when">2023</div>
-      <div class="what">
-        <h2>Software Engineer Intern <span>Casepoint</span></h2>
-        <p>Desktop recruitment system in .NET MVC and PostgreSQL, with RabbitMQ messaging.</p>
-      </div>
-    </div>
-
-    <div class="row rv">
-      <div class="when">2022</div>
-      <div class="what">
-        <h2>Backend Intern <span>Amiseq</span></h2>
-        <p>REST endpoints in Spring Boot and PostgreSQL within a microservices setup.</p>
+  <section class="section" id="numbers">
+    <p class="eyebrow">By the Numbers</p>
+    <div class="stats-grid" id="stats-grid"></div>
+    <div class="gh-panel" id="gh-panel">
+      <p class="gh-title">Live from GitHub</p>
+      <div class="gh-stats" id="gh-stats">
+        <div class="gh-stat"><b id="gh-repos">—</b><span>public repos</span></div>
+        <div class="gh-stat"><b id="gh-followers">—</b><span>followers</span></div>
+        <div class="gh-stat"><b id="gh-stars">—</b><span>stars earned</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= PROJECTS ================= -->
-  <section id="projects">
-    <p class="stage"><i>03</i> projects</p>
-
-    <article class="card rv">
-      <div class="card-head">
-        <h2><a href="https://github.com/vishwapatel24051/TechHire" target="_blank" rel="noopener noreferrer">TechHire<em>↗</em></a></h2>
-        <span class="year">2026</span>
-      </div>
-      <p>Job board for CS students. Scrapes and normalizes listings into a typed schema, validates every apply link, and scores resume-to-job fit with a three-model LLM pipeline.</p>
-      <ul class="metrics">
-        <li><b>200+</b>live postings</li>
-        <li><b>~7ms</b>search API</li>
-        <li><b>92%</b>auto-parsed</li>
-      </ul>
-      <p class="stack">Python · FastAPI · PostgreSQL · React · Docker · Groq</p>
-    </article>
-
-    <article class="card rv">
-      <div class="card-head">
-        <h2><a href="https://github.com/vishwapatel24051/Speed_Medilane" target="_blank" rel="noopener noreferrer">Speed Medilane<em>↗</em></a></h2>
-        <span class="year">2026</span>
-      </div>
-      <p>Flutter app for medicine search, reminders, pharmacy lookup, and preorders. Auth runs through Postgres <code>SECURITY DEFINER</code> functions with row-level security on — the client key ships inside the app bundle, so it can't be trusted with table access.</p>
-      <p class="stack">Flutter · Dart · Supabase · PostgreSQL</p>
-    </article>
+  <section class="section" id="education">
+    <p class="eyebrow">Education</p>
+    <div class="timeline" id="education-list"></div>
   </section>
 
-  <!-- ================= EDUCATION ================= -->
-  <section id="education">
-    <p class="stage"><i>04</i> education</p>
-
-    <div class="row rv">
-      <div class="when">2026—27</div>
-      <div class="what">
-        <h2>MS Computer Science <span>USC</span></h2>
-        <p>Algorithms, web technologies, database systems. GPA 3.66.</p>
-      </div>
-    </div>
-
-    <div class="row rv">
-      <div class="when">2019—23</div>
-      <div class="what">
-        <h2>BE Computer Engineering <span>Gujarat Technological University</span></h2>
-        <p>GPA 8.98/10. Casepoint Excellence Award, 2024.</p>
-      </div>
-    </div>
+  <section class="section" id="skills">
+    <p class="eyebrow">Skills</p>
+    <div class="skills-grid" id="skills-list"></div>
   </section>
 
-  <!-- ================= TOOLS ================= -->
-  <section id="tools">
-    <p class="stage"><i>05</i> tools</p>
-    <div class="tools rv">
-      <div><span>languages</span>Java · Python · C++ · C# · C · JavaScript · Dart</div>
-      <div><span>frameworks</span>Spring Boot · FastAPI · React · Flutter · .NET MVC</div>
-      <div><span>data</span>PostgreSQL · MySQL · Redis · Elasticsearch · Cassandra · HBase</div>
-      <div><span>infra</span>Docker · RabbitMQ · Supabase · Git</div>
-    </div>
+  <section class="section" id="awards">
+    <p class="eyebrow">Certifications &amp; Awards</p>
+    <div class="awards-list" id="awards-list"></div>
   </section>
 
-  <!-- ================= CONTACT ================= -->
-  <section id="contact">
-    <p class="stage"><i>06</i> contact</p>
-    <div class="rv">
-      <h3 class="mail"><a href="mailto:vishwasa@usc.edu">vishwasa@usc.edu</a></h3>
-      <p class="closing">Open to software engineering roles and Summer 2027 internships. Backend, full-stack, or anything adjacent.</p>
-    </div>
+  <section class="section contact" id="contact">
+    <p class="eyebrow">Contact</p>
+    <div id="contact-content"></div>
   </section>
 
 </main>
 
-<footer>
-  <span>Los Angeles, CA</span>
-  <span>Built by hand</span>
-</footer>
+<footer class="footer" id="footer"></footer>
 
+<button class="to-top" id="to-top" aria-label="Back to top" type="button">↑</button>
+
+<script src="data/site-data.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
