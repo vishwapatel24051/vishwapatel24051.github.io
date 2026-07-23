@@ -135,6 +135,14 @@ h1,h2,h3{font-family:var(--sans)}
   mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
 }
 
+/* ---------------- cursor spotlight ---------------- */
+.spotlight{
+  position:fixed;inset:0;z-index:5;pointer-events:none;
+  background:radial-gradient(320px circle at var(--sx,50%) var(--sy,50%), color-mix(in srgb, var(--violet) 14%, transparent), transparent 70%);
+  opacity:0;transition:opacity .3s ease;
+}
+.spotlight.show{opacity:1}
+
 /* ---------------- nav ---------------- */
 .nav{
   position:sticky;top:0;z-index:30;
@@ -170,6 +178,65 @@ h1,h2,h3{font-family:var(--sans)}
 }
 .theme-toggle:hover{border-color:var(--accent);transform:rotate(20deg)}
 @media(max-width:640px){.nav-links{display:none}}
+
+.cmdk-trigger{
+  font-family:var(--mono);font-size:12px;font-weight:500;cursor:pointer;
+  display:flex;align-items:center;gap:2px;
+  padding:7px 11px;border-radius:8px;border:1px solid var(--border);
+  background:var(--surface);color:var(--muted);
+  transition:border-color .16s,color .16s,transform .16s;
+}
+.cmdk-trigger span{color:var(--violet)}
+.cmdk-trigger:hover{border-color:var(--accent);color:var(--text);transform:translateY(-1px)}
+
+/* ---------------- command palette ---------------- */
+.cmdk-overlay{
+  position:fixed;inset:0;z-index:70;
+  background:color-mix(in srgb, black 45%, transparent);
+  backdrop-filter:blur(4px);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding-top:14vh;
+}
+.cmdk-overlay[hidden]{display:none}
+.cmdk-panel{
+  width:min(560px,90vw);background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;box-shadow:0 30px 60px -20px rgba(0,0,0,.4);
+  overflow:hidden;animation:cmdk-in .16s ease;
+}
+@keyframes cmdk-in{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:none}}
+.cmdk-input{
+  width:100%;border:none;outline:none;background:transparent;color:var(--text);
+  font-family:var(--sans);font-size:16px;padding:18px 20px;border-bottom:1px solid var(--border);
+}
+.cmdk-list{max-height:340px;overflow-y:auto;padding:8px}
+.cmdk-item{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:11px 14px;border-radius:10px;cursor:pointer;font-size:14.5px;
+}
+.cmdk-item span.tag{font-family:var(--mono);font-size:11px;color:var(--faint);background:var(--surface-2)}
+.cmdk-item.active{background:var(--accent-soft);color:var(--text)}
+.cmdk-empty{padding:20px;text-align:center;color:var(--faint);font-size:14px}
+
+/* ---------------- scroll cue ---------------- */
+.scroll-cue{
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:20;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  background:none;border:none;cursor:pointer;color:var(--faint);
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  opacity:1;transition:opacity .3s ease;
+}
+.scroll-cue.hide{opacity:0;pointer-events:none}
+.scroll-cue i{font-style:normal;font-size:16px;animation:cue-bounce 1.6s ease-in-out infinite}
+@keyframes cue-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ---------------- toast ---------------- */
+.toast{
+  position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(16px);z-index:80;
+  background:var(--text);color:var(--bg);font-size:13.5px;font-weight:600;
+  padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;
+  transition:opacity .22s ease,transform .22s ease;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ---------------- layout ---------------- */
 main{max-width:var(--wrap);margin:0 auto;padding:0 20px}
@@ -262,10 +329,15 @@ main{max-width:var(--wrap);margin:0 auto;padding:0 20px}
 /* ---------------- project grid ---------------- */
 .grid{display:grid;grid-template-columns:1fr;gap:18px;perspective:1200px}
 .card{
+  position:relative;overflow:hidden;
   background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  padding:26px;transition:transform .12s ease-out,border-color .18s,box-shadow .18s,opacity .25s,scale .25s;
+  padding:28px 26px 26px;transition:transform .12s ease-out,border-color .18s,box-shadow .18s,opacity .25s,scale .25s;
   transform-style:preserve-3d;
 }
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+.card.accent-0::before{background:linear-gradient(90deg,var(--violet),var(--pink))}
+.card.accent-1::before{background:linear-gradient(90deg,var(--cyan),var(--violet))}
+.card.accent-2::before{background:linear-gradient(90deg,var(--pink),var(--amber))}
 .card:hover{border-color:var(--accent);box-shadow:0 20px 40px -20px rgba(124,58,237,.35)}
 .card.hidden{display:none}
 .card-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:4px}
@@ -347,6 +419,16 @@ main{max-width:var(--wrap);margin:0 auto;padding:0 20px}
   font-size:13px;padding:5px 11px;border-radius:8px;
 }
 
+/* staggered pop-in for pills and stack tags */
+.skill-pills span,.card-stack .tag{
+  opacity:0;animation:pop-in .45s ease forwards;
+  animation-delay:calc(var(--i,0) * 45ms);
+}
+@keyframes pop-in{
+  from{opacity:0;transform:translateY(6px) scale(.92)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
 /* ---------------- awards ---------------- */
 .awards-list{display:flex;flex-direction:column;gap:14px}
 .award{
@@ -360,6 +442,7 @@ main{max-width:var(--wrap);margin:0 auto;padding:0 20px}
 
 /* ---------------- contact ---------------- */
 .contact-email{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
   font-size:clamp(22px,4.2vw,32px);font-weight:800;letter-spacing:-.025em;
   margin:0 0 14px;
 }
@@ -368,6 +451,13 @@ main{max-width:var(--wrap);margin:0 auto;padding:0 20px}
   transition:color .16s;
 }
 .contact-email a:hover{color:var(--accent)}
+.copy-email{
+  font-family:var(--mono);font-size:12px;font-weight:500;cursor:pointer;
+  border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  padding:6px 12px;border-radius:999px;
+  transition:border-color .16s,color .16s,transform .16s;
+}
+.copy-email:hover{border-color:var(--accent);color:var(--text);transform:translateY(-1px)}
 .contact-note{margin:0;color:var(--muted);max-width:52ch}
 
 /* ---------------- footer ---------------- */
@@ -389,4 +479,7 @@ main{max-width:var(--wrap);margin:0 auto;padding:0 20px}
   .hero-name{animation:none;background-position:0 center}
   .hero-role .cursor{animation:none}
   .card{transition:none !important;transform:none !important}
+  .skill-pills span,.card-stack .tag{opacity:1;animation:none}
+  .scroll-cue i{animation:none}
+  .spotlight{display:none}
 }

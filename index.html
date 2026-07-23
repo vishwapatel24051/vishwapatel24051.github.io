@@ -22,6 +22,8 @@
   <span class="bg-grid"></span>
 </div>
 
+<div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
 <header class="nav" id="nav">
   <a class="brand" href="#top">VP</a>
   <nav class="nav-links" id="nav-links">
@@ -33,14 +35,28 @@
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </nav>
+  <button class="cmdk-trigger" id="cmdk-trigger" type="button" aria-label="Open command palette">
+    <span>⌘</span>K
+  </button>
   <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
     <span aria-hidden="true">◐</span>
   </button>
 </header>
 
+<div class="cmdk-overlay" id="cmdk-overlay" hidden>
+  <div class="cmdk-panel" role="dialog" aria-modal="true" aria-label="Command palette">
+    <input class="cmdk-input" id="cmdk-input" type="text" placeholder="Jump to a section, open a link…" autocomplete="off">
+    <div class="cmdk-list" id="cmdk-list"></div>
+  </div>
+</div>
+
 <main id="top">
 
   <section class="hero" id="hero"><!-- rendered by app.js --></section>
+
+  <button class="scroll-cue" id="scroll-cue" type="button" aria-label="Scroll to About">
+    <span>Scroll</span><i>⌄</i>
+  </button>
 
   <section class="section" id="about">
     <p class="eyebrow">About</p>
@@ -96,6 +112,8 @@
 <footer class="footer" id="footer"></footer>
 
 <button class="to-top" id="to-top" aria-label="Back to top" type="button">↑</button>
+
+<div class="toast" id="toast"></div>
 
 <script src="data/site-data.js"></script>
 <script src="app.js"></script>
