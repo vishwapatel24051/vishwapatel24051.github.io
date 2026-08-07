@@ -48,6 +48,14 @@
         a.rel = 'noopener noreferrer';
       }
       ctas.appendChild(a);
+      if (l.href === data.social.resume) {
+        var dl = el('a', 'btn-icon', '⬇');
+        dl.href = data.social.resume;
+        dl.download = data.social.resume;
+        dl.title = 'Download resume';
+        dl.setAttribute('aria-label', 'Download resume');
+        ctas.appendChild(dl);
+      }
     });
     body.appendChild(ctas);
 
