@@ -16,18 +16,18 @@ window.SITE_DATA = {
   },
 
   stats: [
-    { value: 3, suffix: "+", label: "years in industry" },
+    { value: 2, suffix: "+", label: "years in industry" },
     { value: 8, suffix: "+", label: "production features shipped" },
     { value: 90, suffix: "%", label: "throughput improvement" },
     { value: 15, suffix: "", label: "support tickets resolved / week" }
   ],
 
-  about: "I'm a software engineer with three years at Casepoint building the backbone of a legal-tech extraction pipeline: recovering corrupted mailbox files, parallelizing document processing, and giving teams real-time visibility into pipeline state. I'm now pursuing an MS in Computer Science at USC (graduating December 2027), and building full-stack projects on the side — a job board with an AI resume analyzer, a DNA sequence alignment tool, and a Flutter pharmacy app.",
+  about: "I'm currently doing my MS in Computer Science at USC, wrapping up in December 2027. Before that, I spent about two years at Casepoint working on the backend of a legal-tech extraction pipeline - fixing corrupted mailbox files, getting document processing to run in parallel instead of one file at a time, and building visibility tools so teams could actually see where a pipeline was stuck instead of guessing. Outside of classes I've been building a few side projects: an AI agent that turns sales signals into outreach briefs, a RAG assistant for asking questions over my own documents, a job board with an AI resume analyzer, and a DNA sequence alignment tool.",
 
   skills: [
     { group: "Languages", items: ["Java", "Python", "C++", "C#", "C", "JavaScript", "Dart", "HTML", "CSS"] },
     { group: "Databases", items: ["PostgreSQL", "MySQL", "SQLite", "Cassandra", "HBase"] },
-    { group: "Frameworks & Tools", items: ["Spring Boot", "Spring MVC", "ReactJS", "Flutter", "Docker", "Redis", "Elasticsearch", "RabbitMQ", "jQuery", "Git"] }
+    { group: "Frameworks & Tools", items: ["FastAPI", "Spring Boot", "Spring MVC", "ReactJS", "PyTorch", "TensorFlow", "Flutter", "Docker", "Redis", "Elasticsearch", "RabbitMQ", "jQuery", "Git"] }
   ],
 
   experience: [
@@ -39,7 +39,8 @@ window.SITE_DATA = {
       end: "June 2025",
       bullets: [
         "Implemented custom field selection in the legal hold reporting module, reducing report generation time by 30% and giving clients configurable, self-service reporting flexibility while maintaining regulatory compliance.",
-        "Resolved 10–20 high-priority production support tickets weekly related to file extraction and processing failures, performing root-cause analysis and code-level fixes to meet client SLAs."
+        "Resolved 10–20 high-priority production support tickets weekly related to file extraction and processing failures, performing root-cause analysis and code-level fixes to meet client SLAs.",
+        "Built a companion agent that tracks audio-peak collection progress in real time by request ID, giving users visibility into status and expected completion time."
       ]
     },
     {
@@ -52,7 +53,7 @@ window.SITE_DATA = {
         "Redesigned the extraction workflow for parallel processing, boosting throughput by ~90% over the single-threaded design.",
         "Engineered a PST repair service with automated recovery, retry logic, and concurrency control for corrupted mailbox files, cutting manual intervention by 50–70%.",
         "Designed a Redis-based status tracking system spanning 6+ processing stages, reducing status update latency by 80%.",
-        "Extended the metadata extraction service to support a new file format for forensic analysis, plus a companion agent to track audio-peak collection progress in real time.",
+        "Extended the metadata extraction service to support a new file format for forensic analysis.",
         "Upgraded core extraction libraries (Oracle, Aspose, VintaSoft), cutting extraction errors and failures by 40%+.",
         "Collaborated with 5+ cross-functional product and engineering stakeholders to deliver 8+ production features end to end."
       ]
@@ -82,6 +83,31 @@ window.SITE_DATA = {
   ],
 
   projects: [
+    {
+      name: "GTM Signal Agent",
+      subtitle: "AI Sales Signal & Outreach Agent",
+      start: "August 2026",
+      end: "August 2026",
+      url: "https://github.com/vishwapatel24051/gtm-signal-agent",
+      description: "AI sales agent (FastAPI, PostgreSQL) that turns company funding, hiring, and tech-stack signals into grounded outreach briefs, with a model layer that swaps across three backends — Groq, Ollama, and Anthropic — via a one-line env change. A deterministic, stage-aware risk engine flags deals going stale within a rolling 30-day window so reps know which accounts need follow-up.",
+      metrics: [
+        { value: "3", label: "LLM backends supported" },
+        { value: "30-day", label: "stale-deal risk window" }
+      ],
+      stack: ["Python", "FastAPI", "React", "PostgreSQL", "Groq", "Ollama", "Anthropic"]
+    },
+    {
+      name: "Smart Document Reader",
+      subtitle: "Local-First RAG Assistant",
+      start: "July 2026",
+      end: "July 2026",
+      url: "https://github.com/vishwapatel24051/smart-document-reader",
+      description: "Local-first RAG assistant that treats document ingestion as the primary engineering problem: format-aware extraction (multi-column PDFs, tables, scanned pages) feeds structure-aware chunking and hybrid dense/lexical retrieval, with every answer grounded by a citation back to its exact source. Benchmarked retrieval accuracy across 16 pipeline configurations to select the best-performing setup.",
+      metrics: [
+        { value: "16", label: "configurations benchmarked" }
+      ],
+      stack: ["Python", "FastAPI", "PostgreSQL", "pgvector", "Ollama"]
+    },
     {
       name: "TechHire",
       subtitle: "AI Job Search Platform",
@@ -138,7 +164,7 @@ window.SITE_DATA = {
       start: "August 2019",
       end: "June 2023",
       gpa: "8.98/10",
-      notes: "Data Structures, OOP Principles, Theory of Computation, Compiler Design, Software Engineering, Operating Systems"
+      notes: "Data Structures, OOP Principles, Theory of Computation, Compiler Design, Software Engineering, Machine Learning, Artificial Intelligence, Operating Systems"
     }
   ],
 
