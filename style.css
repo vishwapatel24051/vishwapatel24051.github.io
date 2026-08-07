@@ -329,7 +329,7 @@ main{max-width:var(--wrap);margin:0 auto;padding:0 20px}
 /* ---------------- project grid ---------------- */
 .grid{display:grid;grid-template-columns:1fr;gap:18px;perspective:1200px}
 .card{
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;cursor:pointer;
   background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
   padding:28px 26px 26px;transition:transform .12s ease-out,border-color .18s,box-shadow .18s,opacity .25s,scale .25s;
   transform-style:preserve-3d;

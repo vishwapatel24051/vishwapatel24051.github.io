@@ -35,7 +35,7 @@
 
     var ctas = el('div', 'hero-ctas');
     var links = [
-      { label: 'Résumé', href: data.social.resume, primary: true },
+      { label: 'Resume', href: data.social.resume, primary: true },
       { label: 'GitHub', href: data.social.github },
       { label: 'LinkedIn', href: data.social.linkedin },
       { label: 'Email', href: 'mailto:' + data.email }
@@ -160,6 +160,11 @@
         stack.appendChild(tagEl);
       });
       card.appendChild(stack);
+
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        window.open(p.url, '_blank', 'noopener');
+      });
 
       grid.appendChild(card);
     });
@@ -555,7 +560,7 @@
       { label: 'Go to Contact', hint: 'section', action: function () { scrollToId('contact'); } },
       { label: 'Open GitHub', hint: 'link', action: function () { window.open(data.social.github, '_blank', 'noopener'); } },
       { label: 'Open LinkedIn', hint: 'link', action: function () { window.open(data.social.linkedin, '_blank', 'noopener'); } },
-      { label: 'Open Résumé', hint: 'link', action: function () { window.open(data.social.resume, '_blank', 'noopener'); } },
+      { label: 'Open Resume', hint: 'link', action: function () { window.open(data.social.resume, '_blank', 'noopener'); } },
       {
         label: 'Copy email address', hint: 'action', action: function () {
           if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -569,6 +574,13 @@
     var activeIndex = 0;
     var filtered = commands.slice();
 
+    function setActive(i) {
+      activeIndex = i;
+      Array.prototype.forEach.call(list.children, function (child, j) {
+        child.classList.toggle('active', j === activeIndex);
+      });
+    }
+
     function renderList() {
       list.innerHTML = '';
       if (!filtered.length) {
@@ -579,7 +591,7 @@
         var item = el('div', 'cmdk-item' + (i === activeIndex ? ' active' : ''));
         item.appendChild(el('span', '', cmd.label));
         item.appendChild(el('span', 'tag', cmd.hint));
-        item.addEventListener('mouseenter', function () { activeIndex = i; renderList(); });
+        item.addEventListener('mouseenter', function () { setActive(i); });
         item.addEventListener('click', function () { runCommand(cmd); });
         list.appendChild(item);
       });
@@ -619,12 +631,10 @@
     input.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowDown') {
         e.preventDefault();
-        activeIndex = Math.min(activeIndex + 1, filtered.length - 1);
-        renderList();
+        setActive(Math.min(activeIndex + 1, filtered.length - 1));
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
-        activeIndex = Math.max(activeIndex - 1, 0);
-        renderList();
+        setActive(Math.max(activeIndex - 1, 0));
       } else if (e.key === 'Enter') {
         e.preventDefault();
         if (filtered[activeIndex]) runCommand(filtered[activeIndex]);
