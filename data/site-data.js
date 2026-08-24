@@ -22,7 +22,7 @@ window.SITE_DATA = {
     { value: 15, suffix: "", label: "support tickets resolved / week" }
   ],
 
-  about: "I'm currently doing my MS in Computer Science at USC, wrapping up in December 2027. Before that, I spent about two years at Casepoint working on the backend of a legal-tech extraction pipeline - fixing corrupted mailbox files, getting document processing to run in parallel instead of one file at a time, and building visibility tools so teams could actually see where a pipeline was stuck instead of guessing. Outside of classes I've been building a few side projects: an AI agent that turns sales signals into outreach briefs, a RAG assistant for asking questions over my own documents, a job board with an AI resume analyzer, and a DNA sequence alignment tool.",
+  about: "I'm currently doing my MS in Computer Science at USC, wrapping up in December 2027. Before that, I spent about two years at Casepoint working on the backend of a legal-tech extraction pipeline: fixing corrupted mailbox files, getting document processing to run in parallel instead of one file at a time, and building visibility tools so teams could actually see where a pipeline was stuck instead of guessing. Outside of classes I've been building a few side projects: an AI agent that turns sales signals into outreach briefs, a RAG assistant for asking questions over my own documents, a job board with an AI resume analyzer, and a DNA sequence alignment tool.",
 
   skills: [
     { group: "Languages", items: ["Java", "Python", "C++", "C#", "C", "JavaScript", "Dart", "HTML", "CSS"] },
@@ -84,12 +84,25 @@ window.SITE_DATA = {
 
   projects: [
     {
+      name: "Traffic Sign Detector",
+      subtitle: "YOLOv8 German Road Sign Detection",
+      start: "August 2026",
+      end: "August 2026",
+      url: "https://github.com/vishwapatel24051/traffic-sign-detector",
+      description: "An AI model trained to find and label traffic signs in photos, evaluated per sign type for accuracy, and demoed through a simple web app.",
+      metrics: [
+        { value: "+5.7pt", label: "mAP@0.5 improvement" },
+        { value: "43", label: "sign classes detected" }
+      ],
+      stack: ["Python", "YOLOv8", "PyTorch", "Ultralytics", "Gradio", "ONNX"]
+    },
+    {
       name: "GTM Signal Agent",
       subtitle: "AI Sales Signal & Outreach Agent",
       start: "August 2026",
       end: "August 2026",
       url: "https://github.com/vishwapatel24051/gtm-signal-agent",
-      description: "AI sales agent (FastAPI, PostgreSQL) that turns company funding, hiring, and tech-stack signals into grounded outreach briefs, with a model layer that swaps across three backends — Groq, Ollama, and Anthropic — via a one-line env change. A deterministic, stage-aware risk engine flags deals going stale within a rolling 30-day window so reps know which accounts need follow-up.",
+      description: "AI sales agent (FastAPI, PostgreSQL) that turns company funding, hiring, and tech-stack signals into grounded outreach briefs, with a model layer that swaps across three backends (Groq, Ollama, and Anthropic) via a one-line env change. A deterministic, stage-aware risk engine flags deals going stale within a rolling 30-day window so reps know which accounts need follow-up.",
       metrics: [
         { value: "3", label: "LLM backends supported" },
         { value: "30-day", label: "stale-deal risk window" }
@@ -128,7 +141,7 @@ window.SITE_DATA = {
       start: "April 2026",
       end: "May 2026",
       url: "https://github.com/vishwapatel24051/Sequence-Alignment",
-      description: "Global DNA sequence alignment implemented two ways — Needleman-Wunsch dynamic programming and Hirschberg's divide-and-conquer — cutting space from O(mn) to O(m+n) with identical optimal alignments. Benchmarked CPU time and peak memory across input sizes.",
+      description: "Global DNA sequence alignment implemented two ways: Needleman-Wunsch dynamic programming and Hirschberg's divide-and-conquer, cutting space from O(mn) to O(m+n) with identical optimal alignments. Benchmarked CPU time and peak memory across input sizes.",
       metrics: [
         { value: "O(m+n)", label: "space, down from O(mn)" },
         { value: "2", label: "algorithms benchmarked" }
