@@ -25,9 +25,11 @@ window.SITE_DATA = {
   about: "I'm currently doing my MS in Computer Science at USC, wrapping up in December 2027. Before that, I spent about two years at Casepoint working on the backend of a legal-tech extraction pipeline: fixing corrupted mailbox files, getting document processing to run in parallel instead of one file at a time, and building visibility tools so teams could actually see where a pipeline was stuck instead of guessing. Outside of classes I've been building a few side projects: an AI agent that turns sales signals into outreach briefs, a RAG assistant for asking questions over my own documents, a job board with an AI resume analyzer, and a DNA sequence alignment tool.",
 
   skills: [
-    { group: "Languages", items: ["Java", "Python", "C++", "C#", "C", "JavaScript", "Dart", "HTML", "CSS"] },
-    { group: "Databases", items: ["PostgreSQL", "MySQL", "SQLite", "Cassandra", "HBase"] },
-    { group: "Frameworks & Tools", items: ["FastAPI", "Spring Boot", "Spring MVC", "ReactJS", "PyTorch", "TensorFlow", "Flutter", "Docker", "Redis", "Elasticsearch", "RabbitMQ", "jQuery", "Git"] }
+    { group: "Languages", items: ["C++", "Python", "Java", "C", "C#", "Go", "JavaScript/TypeScript", "SQL", "HTML/CSS", "Dart"] },
+    { group: "Systems & Databases", items: ["PostgreSQL (incl. pgvector)", "MongoDB", "Redis", "MySQL", "SQLite", "HBase", "Cassandra", "Database Internals", "Query Optimization", "Linux"] },
+    { group: "Frameworks & Tools", items: ["React", "Node.js", "FastAPI", "REST APIs", "Express", "Flask", "Next.js", "Angular", "GraphQL", "Spring Boot", "Spring MVC", "Elasticsearch", "RabbitMQ", "jQuery", "Flutter", "GDB", "GCC"] },
+    { group: "Cloud & DevOps", items: ["AWS (EC2, S3, Lambda, RDS)", "Docker", "Kubernetes", "Firebase", "Git", "CI/CD", "Microservices"] },
+    { group: "AI/ML", items: ["PyTorch", "TensorFlow", "Keras", "scikit-learn", "OpenCV", "RAG", "SpaCy", "YOLOv11", "Claude API", "Voyage AI"] }
   ],
 
   experience: [
@@ -38,9 +40,9 @@ window.SITE_DATA = {
       start: "May 2025",
       end: "June 2025",
       bullets: [
-        "Implemented custom field selection in the legal hold reporting module, reducing report generation time by 30% and giving clients configurable, self-service reporting flexibility while maintaining regulatory compliance.",
-        "Resolved 10–20 high-priority production support tickets weekly related to file extraction and processing failures, performing root-cause analysis and code-level fixes to meet client SLAs.",
-        "Built a companion agent that tracks audio-peak collection progress in real time by request ID, giving users visibility into status and expected completion time."
+        "Engineered custom field selection for the legal hold reporting module so clients could build personalized reports, cutting report generation time by 30% while staying within regulatory compliance.",
+        "Resolved 10–20 high-priority support tickets a week for extraction and processing failures, diagnosing root causes and shipping code-level fixes to stay within client SLAs.",
+        "Improved status visibility 90% by building a companion agent that tracks audio-peak collection in real time by request ID."
       ]
     },
     {
@@ -50,12 +52,12 @@ window.SITE_DATA = {
       start: "July 2023",
       end: "May 2025",
       bullets: [
-        "Redesigned the extraction workflow for parallel processing, boosting throughput by ~90% over the single-threaded design.",
-        "Engineered a PST repair service with automated recovery, retry logic, and concurrency control for corrupted mailbox files, cutting manual intervention by 50–70%.",
-        "Designed a Redis-based status tracking system spanning 6+ processing stages, reducing status update latency by 80%.",
-        "Extended the metadata extraction service to support a new file format for forensic analysis.",
-        "Upgraded core extraction libraries (Oracle, Aspose, VintaSoft), cutting extraction errors and failures by 40%+.",
-        "Collaborated with 5+ cross-functional product and engineering stakeholders to deliver 8+ production features end to end."
+        "Rebuilt the extraction workflow to run in parallel instead of single-threaded, boosting throughput by ~90%.",
+        "Developed a PST repair service with automated recovery and retry logic for corrupted mailbox files, trimming manual intervention by 50 to 70% and integrating it directly into the production workflow.",
+        "Leveraged Redis to track document status across 6+ workflow stages, staging each record during ingestion and committing it to the database only once processing completes, slashing status-update latency by 80%.",
+        "Extended the metadata service to support a new file format for forensic analysis, folding the update into the same pipeline.",
+        "Upgraded core extraction libraries (Oracle, Aspose, VintaSoft) for better compatibility, reducing errors and failures by over 40%.",
+        "Partnered with 5+ teams across product and engineering to scope requirements and ship 8+ production features, including surfacing operational data to other teams' dashboards without breaking integrations."
       ]
     },
     {
@@ -65,8 +67,8 @@ window.SITE_DATA = {
       start: "January 2023",
       end: "June 2023",
       bullets: [
-        "Developed a desktop-based Recruitment System using .NET MVC, C#, Windows Forms, PostgreSQL, and Kendo UI, implementing 20+ UI screens and comprehensive client/server-side validations.",
-        "Integrated RabbitMQ for asynchronous internal messaging between application components, delivering features in an Agile development cycle."
+        "Created a desktop-based Recruitment System (.NET MVC, C#, Windows Forms, PostgreSQL, Kendo UI) with 20+ UI screens and both client- and server-side validation for better maintainability.",
+        "Integrated RabbitMQ for asynchronous messaging between app components as part of an Agile sprint cycle."
       ]
     },
     {
@@ -76,8 +78,8 @@ window.SITE_DATA = {
       start: "June 2022",
       end: "July 2022",
       bullets: [
-        "Developed 10+ RESTful API endpoints using Spring Boot and PostgreSQL, implementing CRUD operations and modular services following a microservices architecture.",
-        "Tested and debugged API endpoints with Postman, catching integration issues before deployment."
+        "Shipped 10+ RESTful API endpoints in Spring Boot and PostgreSQL, structured as modular microservices for CRUD operations.",
+        "Debugged and validated those endpoints in Postman, catching integration issues early and confirming reliable request/response handling."
       ]
     }
   ],
