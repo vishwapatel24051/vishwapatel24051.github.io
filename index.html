@@ -1,121 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vishwa Patel — Software Engineer</title>
-<meta name="description" content="Software engineer building reliable data pipelines and full-stack products. MS Computer Science at USC, graduating Dec 2027.">
-<meta name="theme-color" content="#0F172A">
+<title>Vishwa Patel</title>
+<meta name="description" content="Vishwa Patel, M.S. Computer Science student at USC. Grader, Orientation Leader, and builder. Looking for internships & co-ops.">
+<link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="progress" id="progress"></div>
+<div class="blob blob-a" aria-hidden="true"></div>
+<div class="blob blob-b" aria-hidden="true"></div>
+<div class="blob blob-c" aria-hidden="true"></div>
 
-<div class="bg-blobs" aria-hidden="true">
-  <span class="blob blob-1"></span>
-  <span class="blob blob-2"></span>
-  <span class="blob blob-3"></span>
-  <span class="bg-grid"></span>
-</div>
-
-<div class="spotlight" id="spotlight" aria-hidden="true"></div>
-
-<header class="nav" id="nav">
-  <a class="brand" href="#top">VP</a>
-  <nav class="nav-links" id="nav-links">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#numbers">Numbers</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+<header class="topbar">
+  <a href="#top" class="mark">Vishwa Patel</a>
+  <nav class="topnav">
+    <a href="#now">Right now</a>
+    <a href="#builds">Projects</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Say hi</a>
   </nav>
-  <button class="cmdk-trigger" id="cmdk-trigger" type="button" aria-label="Open command palette">
-    <span>⌘</span>K
-  </button>
-  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
-    <span aria-hidden="true">◐</span>
-  </button>
 </header>
-
-<div class="cmdk-overlay" id="cmdk-overlay" hidden>
-  <div class="cmdk-panel" role="dialog" aria-modal="true" aria-label="Command palette">
-    <input class="cmdk-input" id="cmdk-input" type="text" placeholder="Jump to a section, open a link…" autocomplete="off">
-    <div class="cmdk-list" id="cmdk-list"></div>
-  </div>
-</div>
 
 <main id="top">
 
-  <section class="hero" id="hero"><!-- rendered by app.js --></section>
+  <!-- HERO: nametag -->
+  <section class="hero">
+    <div class="hero-main">
+      <div class="hero-text">
+        <p class="hero-hi">Hi, I'm</p>
+        <h1 class="hero-title">Vishwa Patel <span class="wave">👋</span></h1>
+        <p class="hero-role">M.S. Computer Science @ USC · Class of Dec 2027</p>
 
-  <button class="scroll-cue" id="scroll-cue" type="button" aria-label="Scroll to About">
-    <span>Scroll</span><i>⌄</i>
-  </button>
+        <div class="chip-row">
+          <span class="chip chip-mint">🔍 open to internships &amp; co-ops</span>
+          <span class="chip chip-coral">📍 Los Angeles, CA</span>
+        </div>
 
-  <section class="section" id="about">
-    <p class="eyebrow">About</p>
-    <p class="about-text" id="about-text"></p>
-  </section>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="Vishwa_Patel_Resume.pdf" download>Download resume</a>
+          <a class="btn" href="mailto:vishwasa@usc.edu">Say hello</a>
+          <a class="btn" href="https://github.com/vishwapatel24051" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://linkedin.com/in/vishwapatel2405" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
 
-  <section class="section" id="experience">
-    <p class="eyebrow">Experience</p>
-    <div class="timeline" id="experience-list"></div>
-  </section>
-
-  <section class="section" id="projects">
-    <p class="eyebrow">Projects</p>
-    <div class="filters" id="project-filters"></div>
-    <div class="grid" id="project-grid"></div>
-  </section>
-
-  <section class="section" id="numbers">
-    <p class="eyebrow">By the Numbers</p>
-    <div class="stats-grid" id="stats-grid"></div>
-    <div class="gh-panel" id="gh-panel">
-      <p class="gh-title">Live from GitHub</p>
-      <div class="gh-stats" id="gh-stats">
-        <div class="gh-stat"><b id="gh-repos">—</b><span>public repos</span></div>
-        <div class="gh-stat"><b id="gh-followers">—</b><span>followers</span></div>
-        <div class="gh-stat"><b id="gh-stars">—</b><span>stars earned</span></div>
+      <div class="hero-photo">
+        <img src="photo.jpg" alt="Vishwa Patel" onerror="this.parentElement.classList.add('photo-missing')">
+        <span class="photo-fallback">photo.jpg</span>
       </div>
     </div>
   </section>
 
-  <section class="section" id="education">
-    <p class="eyebrow">Education</p>
-    <div class="timeline" id="education-list"></div>
+  <!-- ABOUT: personal -->
+  <section class="section about">
+    <p class="about-lede">I'm genuinely curious about how far AI can go. Not the hype, the actual mechanics of it. What makes an agent reason well. Why a model gets something wrong. That kind of curious.</p>
+    <p>I've taken Agentic AI and Natural Language Processing at USC, and they were easily two of my favorite classes so far. Outside of class, I build things just to keep poking at that curiosity: an AI agent that researches companies on its own, a resume analyzer that reasons across three different models, a RAG assistant I kept tuning until the retrieval actually held up.</p>
+    <p>Before USC, I spent two years as a Software Engineer at Casepoint. Coming back to school let me slow down and actually chase the questions I used to just work around.</p>
   </section>
 
-  <section class="section" id="skills">
-    <p class="eyebrow">Skills</p>
-    <div class="skills-grid" id="skills-list"></div>
+  <!-- RIGHT NOW: current roles -->
+  <section id="now" class="section">
+    <div class="section-head">
+      <h2>What I'm doing right now</h2>
+      <p class="section-sub">Part-time campus roles alongside my coursework, mostly about sharpening communication, teaching, and problem-solving on the side.</p>
+    </div>
+
+    <div class="now-grid now-grid-3">
+
+      <article class="now-card now-card-a">
+        <span class="now-emoji">🗄️</span>
+        <h3>Grader, Database Systems</h3>
+        <p class="now-meta">CSCI 585, under Prof. Shahram Ghandeharizadeh</p>
+        <p>Designing exam questions and grading rubrics for one of USC's core graduate database courses.</p>
+        <details class="more">
+          <summary>Read more</summary>
+          <p>Then evaluating submissions against those rubrics to keep assessment fair and consistent across the class.</p>
+        </details>
+      </article>
+
+      <article class="now-card now-card-b">
+        <span class="now-emoji">🧭</span>
+        <h3>Orientation Leader</h3>
+        <p class="now-meta">USC Viterbi Graduate Programs (VGOL)</p>
+        <p>Welcomed and guided 1,200+ incoming master's engineering students through New Student Orientation.</p>
+        <details class="more">
+          <summary>Read more</summary>
+          <p>Presented on academic services and campus resources, answered questions in real time, and partnered with staff and 20+ fellow leaders to keep it organized and actually welcoming.</p>
+        </details>
+      </article>
+
+      <article class="now-card now-card-c">
+        <span class="now-emoji">🛠️</span>
+        <h3>Technical Student Assistant</h3>
+        <p class="now-meta">USC Information Technology Services (ITS)</p>
+        <p>Diagnosing and resolving hardware, software, and network issues across USC's ITS Learning Environments.</p>
+        <details class="more">
+          <summary>Read more</summary>
+          <p>Including Crestron-managed classrooms, Zoom-enabled rooms, and dual-boot computer labs. Serving as a front-line technical contact for faculty, staff, and students.</p>
+        </details>
+      </article>
+
+    </div>
+
+    <div class="award">
+      <span class="award-badge">🏆</span>
+      <div class="award-text">
+        <strong>Casepoint Excellence Award, 2024</strong> for Sprint Delivery Standout, from my two years there as a Software Engineer before starting at USC.
+      </div>
+    </div>
   </section>
 
-  <section class="section" id="awards">
-    <p class="eyebrow">Certifications &amp; Awards</p>
-    <div class="awards-list" id="awards-list"></div>
+  <!-- PROJECTS -->
+  <section id="builds" class="section">
+    <div class="section-head">
+      <h2>Things I've built</h2>
+      <p class="section-sub">Outside of class and work, start to finish, on my own.</p>
+    </div>
+
+    <div class="builds">
+
+      <article class="build build-1">
+        <h3>GTM Signal Agent</h3>
+        <p>An end-to-end AI sales agent that turns company funding, hiring, and tech-stack signals into outreach briefs, with a risk-scoring engine that flags stale deals within a rolling 30-day window.</p>
+        <ul class="build-tags">
+          <li>Python</li><li>FastAPI</li><li>React</li><li>PostgreSQL</li><li>LLMs</li>
+        </ul>
+        <a class="build-link" href="https://github.com/vishwapatel24051/gtm-signal-agent" target="_blank" rel="noopener">View source</a>
+      </article>
+
+      <article class="build build-2">
+        <h3>TechHire</h3>
+        <p>A full-stack job platform integrating a Python scraper, FastAPI backend, and React frontend, indexing 5,000+ live postings, with an AI resume analyzer that showed an 85-point spread between strong- and weak-fit resumes in blind testing.</p>
+        <ul class="build-tags">
+          <li>Python</li><li>FastAPI</li><li>React</li><li>PostgreSQL</li><li>Groq</li>
+        </ul>
+        <a class="build-link" href="https://github.com/vishwapatel24051/TechHire" target="_blank" rel="noopener">View source</a>
+      </article>
+
+      <article class="build build-3">
+        <h3>Smart Document Reader</h3>
+        <p>A local-first RAG assistant that parses PDFs and tables using hybrid dense and lexical retrieval, grounding every answer with a citation back to its source. Benchmarked across 16 configurations to find the best setup.</p>
+        <ul class="build-tags">
+          <li>Python</li><li>FastAPI</li><li>pgvector</li><li>RAG</li>
+        </ul>
+        <a class="build-link" href="https://github.com/vishwapatel24051/smart-document-reader" target="_blank" rel="noopener">View source</a>
+      </article>
+
+      <article class="build build-4">
+        <h3>Traffic Sign Detector</h3>
+        <p>Trained and evaluated a YOLOv8 object detection model to detect and classify traffic signs, improving accuracy through targeted error analysis, then exported it to ONNX for lightweight deployment.</p>
+        <ul class="build-tags">
+          <li>Python</li><li>PyTorch</li><li>YOLOv8</li><li>ONNX</li>
+        </ul>
+        <a class="build-link" href="https://github.com/vishwapatel24051/traffic-sign-detector" target="_blank" rel="noopener">View source</a>
+      </article>
+
+    </div>
   </section>
 
-  <section class="section contact" id="contact">
-    <p class="eyebrow">Contact</p>
-    <div id="contact-content"></div>
+  <!-- STACK -->
+  <section id="stack" class="section">
+    <div class="section-head">
+      <h2>What I reach for</h2>
+    </div>
+
+    <div class="stack-groups">
+      <div class="stack-group stack-group-purple">
+        <h3>Languages</h3>
+        <div class="stack-tags">
+          <span class="tag">Python</span><span class="tag">C#</span><span class="tag">Java</span><span class="tag">C++</span><span class="tag">JavaScript/TypeScript</span><span class="tag">Go</span><span class="tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="stack-group stack-group-coral">
+        <h3>Web &amp; Frameworks</h3>
+        <div class="stack-tags">
+          <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Angular</span><span class="tag">Flutter</span><span class="tag">.NET MVC</span><span class="tag">Spring Boot</span><span class="tag">FastAPI</span><span class="tag">Node.js</span><span class="tag">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="stack-group stack-group-mint">
+        <h3>Data &amp; Databases</h3>
+        <div class="stack-tags">
+          <span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">Elasticsearch</span><span class="tag">ETL</span>
+        </div>
+      </div>
+
+      <div class="stack-group stack-group-purple">
+        <h3>AI &amp; ML</h3>
+        <div class="stack-tags">
+          <span class="tag">PyTorch</span><span class="tag">scikit-learn</span><span class="tag">RAG</span><span class="tag">LLMs</span><span class="tag">Prompt Engineering</span><span class="tag">ONNX</span>
+        </div>
+      </div>
+
+      <div class="stack-group stack-group-coral">
+        <h3>Cloud &amp; Practices</h3>
+        <div class="stack-tags">
+          <span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">CI/CD</span><span class="tag">Git</span><span class="tag">Agile/Scrum</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="contact-card">
+      <h2>Let's talk internships &amp; co-ops</h2>
+      <p>Always up for a conversation about systems, AI, or whatever you're building. I'm easy to reach.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:vishwasa@usc.edu">vishwasa@usc.edu</a>
+        <a class="btn" href="tel:+12138293399">(213) 829-3399</a>
+        <a class="btn" href="https://linkedin.com/in/vishwapatel2405" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/vishwapatel24051" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
   </section>
 
 </main>
 
-<footer class="footer" id="footer"></footer>
+<footer class="footer">
+  <span>Vishwa Patel, Los Angeles, CA</span>
+  <span>Built by hand, not a template.</span>
+</footer>
 
-<button class="to-top" id="to-top" aria-label="Back to top" type="button">↑</button>
-
-<div class="toast" id="toast"></div>
-
-<script src="data/site-data.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
