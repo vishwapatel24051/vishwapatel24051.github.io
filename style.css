@@ -634,6 +634,8 @@ main, header, footer { position: relative; z-index: 1; }
 .build-2 { border-top-color: var(--coral); }
 .build-3 { border-top-color: var(--mint); }
 .build-4 { border-top-color: var(--yellow); }
+.build-5 { border-top-color: var(--purple); }
+.build-6 { border-top-color: var(--coral); }
 
 .build h3 {
   font-size: 1.15rem;

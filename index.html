@@ -120,7 +120,7 @@
         </div>
         <p class="edu-degree">Bachelor of Engineering, Computer Engineering</p>
         <div class="edu-tags">
-          <span class="tag">Data Structures</span><span class="tag">OOP</span><span class="tag">Theory of Computation</span><span class="tag">Software Engineering</span><span class="tag">Machine Learning</span>
+          <span class="tag">Data Structures</span><span class="tag">Operating Systems</span><span class="tag">Software Engineering</span><span class="tag">Machine Learning</span><span class="tag">AI</span>
         </div>
       </article>
     </div>
@@ -143,11 +143,14 @@
         </summary>
         <div class="exp-body">
           <ul class="exp-points">
-            <li>Rebuilt a document extraction pipeline to run in parallel instead of single threaded, scaling throughput by roughly 90%, and folded the change into the team's CI/CD pipeline.</li>
-            <li>Engineered custom field selection for the legal hold reporting module end to end, cutting report generation time by 30% while staying within regulatory compliance.</li>
-            <li>Built a PST repair service with automated recovery and retry logic for corrupted files, cutting manual intervention by 50–70%.</li>
-            <li>Resolved 10 to 20 high-priority support tickets a week for extraction and processing failures, diagnosing root causes and writing regression tests to validate fixes.</li>
-            <li>Partnered with developers and designers across 5+ teams to extend application and API architecture, shipping 8+ production features end to end.</li>
+            <li>Increased document-processing throughput by 90% by diagnosing a file-locking constraint that serialized file handling, re-architecting the C#/.NET system to run in parallel, and releasing it through CI/CD.</li>
+            <li>Recovered 70% of failed PST files with a repair service that detects failures in the pipeline, lets clients trigger reprocessing, and routes repaired files back in automatically.</li>
+            <li>Processed 100% of 10K+ previously skipped forensic files by building a full-stack feature integrated into the pipeline.</li>
+            <li>Cut status-update latency by 80% by buffering each service's updates in Redis and batching PostgreSQL commits.</li>
+            <li>Reduced file errors by 40% by upgrading third-party libraries, including Oracle, Aspose, and VintaSoft.</li>
+            <li>Identified and optimized 85% of slow-running queries across processing services using Elasticsearch query monitoring.</li>
+            <li>Enabled 90% of clients to customize reports with only the fields they need, supporting 20+ processing-team database fields and coordinating with 5+ teams to prevent crashes.</li>
+            <li>Shipped 10+ features in one quarter with Agile Scrum.</li>
           </ul>
           <p class="exp-award">🏆 Casepoint Excellence Award 2024: Sprint Delivery Standout</p>
         </div>
@@ -163,8 +166,8 @@
         </summary>
         <div class="exp-body">
           <ul class="exp-points">
-            <li>Built a desktop-based Recruitment System (.NET MVC, C#, PostgreSQL) with 20+ UI screens, covering design, development, and testing with client- and server-side validation.</li>
-            <li>Integrated RabbitMQ for asynchronous messaging between app components as part of an Agile sprint development cycle.</li>
+            <li>Saved HR 60% of hiring time by building a Recruitment System with 20+ UI screens centralizing scheduling, scored reports, resume review, offer letters, and tracking in .NET MVC, C#, PostgreSQL, and Kendo UI.</li>
+            <li>Lowered average response time by 35% by integrating RabbitMQ for asynchronous messaging between app components.</li>
           </ul>
         </div>
       </details>
@@ -179,8 +182,8 @@
         </summary>
         <div class="exp-body">
           <ul class="exp-points">
-            <li>Shipped 10+ RESTful API endpoints in Java (Spring Boot, PostgreSQL) as modular microservices for CRUD operations.</li>
-            <li>Wrote JUnit unit tests alongside Postman validation for those endpoints, catching integration issues early and confirming reliable request/response handling.</li>
+            <li>Delivered an internal to-do list backend with 10+ REST API endpoints, built as modular Java and Spring Boot microservices on PostgreSQL.</li>
+            <li>Reached 95% test coverage with JUnit and validated the endpoints with Postman.</li>
           </ul>
         </div>
       </details>
@@ -191,12 +194,39 @@
   <section id="builds" class="section">
     <div class="section-head">
       <h2>Things I've built</h2>
-      <p class="section-sub">Outside of class and work, start to finish, on my own.</p>
+      <p class="section-sub">Outside of class and work.</p>
     </div>
 
     <div class="builds">
 
       <article class="build build-1">
+        <h3>MCP-PROBE: Do MCP Tool Poisoning Detectors Generalize?</h3>
+        <p>A Python proxy that sits between AI agents and MCP servers and blocks tools flagged by MCP-Guard and MCP Guardian. Fine-tuned MCP-Guard variants with 3 MCPTox attack categories held out, reaching 99.9% accuracy vs. the rule-based Guardian's 50.2%.</p>
+        <ul class="build-tags">
+          <li>Python</li><li>PyTorch</li><li>MCP</li>
+        </ul>
+        <a class="build-link" href="https://github.com/vishwapatel24051/MCP-PROBE" target="_blank" rel="noopener">View source</a>
+      </article>
+
+      <article class="build build-2">
+        <h3>Haggle: Multi-Agent Event Catering Platform</h3>
+        <p>A 6-agent system where agents find nearby caterers, collect quotes, negotiate up to 3 rounds within each vendor's rules, and book in one chat, cutting manual steps by 63%.</p>
+        <ul class="build-tags">
+          <li>Python</li><li>Fetch.ai uAgents</li><li>ASI:One</li><li>Stripe</li>
+        </ul>
+        <a class="build-link" href="https://github.com/vishwapatel24051/Haggle" target="_blank" rel="noopener">View source</a>
+      </article>
+
+      <article class="build build-3">
+        <h3>TechHire</h3>
+        <p>An AI-powered job search platform (FastAPI, React, PostgreSQL) listing 1,000+ postings with sponsorship, salary, and skill filters, a resume scorer, and 3-model job summaries. A LangGraph RAG chatbot on pgvector answers with cited sources, lifting search accuracy from 68% to 92% on 74 test questions, and Redis caching cuts repeat-search time by 93%.</p>
+        <ul class="build-tags">
+          <li>FastAPI</li><li>React</li><li>PostgreSQL</li><li>pgvector</li><li>LangGraph</li>
+        </ul>
+        <a class="build-link" href="https://github.com/vishwapatel24051/TechHire" target="_blank" rel="noopener">View source</a>
+      </article>
+
+      <article class="build build-4">
         <h3>GTM Signal Agent</h3>
         <p>An end-to-end AI sales agent that turns company funding, hiring, and tech-stack signals into outreach briefs, with a risk-scoring engine that flags stale deals within a rolling 30-day window.</p>
         <ul class="build-tags">
@@ -205,16 +235,7 @@
         <a class="build-link" href="https://github.com/vishwapatel24051/gtm-signal-agent" target="_blank" rel="noopener">View source</a>
       </article>
 
-      <article class="build build-2">
-        <h3>TechHire</h3>
-        <p>A full-stack job platform integrating a Python scraper, FastAPI backend, and React frontend, indexing 5,000+ live postings, with an AI resume analyzer that showed an 85-point spread between strong- and weak-fit resumes in blind testing.</p>
-        <ul class="build-tags">
-          <li>Python</li><li>FastAPI</li><li>React</li><li>PostgreSQL</li><li>Groq</li>
-        </ul>
-        <a class="build-link" href="https://github.com/vishwapatel24051/TechHire" target="_blank" rel="noopener">View source</a>
-      </article>
-
-      <article class="build build-3">
+      <article class="build build-5">
         <h3>Smart Document Reader</h3>
         <p>A local-first RAG assistant that parses PDFs and tables using hybrid dense and lexical retrieval, grounding every answer with a citation back to its source. Benchmarked across 16 configurations to find the best setup.</p>
         <ul class="build-tags">
@@ -223,7 +244,7 @@
         <a class="build-link" href="https://github.com/vishwapatel24051/smart-document-reader" target="_blank" rel="noopener">View source</a>
       </article>
 
-      <article class="build build-4">
+      <article class="build build-6">
         <h3>Traffic Sign Detector</h3>
         <p>Trained and evaluated a YOLOv8 object detection model to detect and classify traffic signs, improving accuracy through targeted error analysis, then exported it to ONNX for lightweight deployment.</p>
         <ul class="build-tags">
@@ -254,7 +275,7 @@
         <div class="bento-icon">◍</div>
         <h3>Data &amp; Databases</h3>
         <div class="bento-tags">
-          <span class="btag"><i></i>PostgreSQL</span><span class="btag"><i></i>Redis</span><span class="btag"><i></i>MySQL</span><span class="btag"><i></i>MongoDB</span><span class="btag"><i></i>Elasticsearch</span><span class="btag"><i></i>ETL</span>
+          <span class="btag"><i></i>PostgreSQL</span><span class="btag"><i></i>Redis</span><span class="btag"><i></i>MySQL</span><span class="btag"><i></i>MongoDB</span><span class="btag"><i></i>Elasticsearch</span><span class="btag"><i></i>pgvector</span><span class="btag"><i></i>Query Optimization</span>
         </div>
       </div>
 
@@ -262,7 +283,7 @@
         <div class="bento-icon">✦</div>
         <h3>AI &amp; ML</h3>
         <div class="bento-tags">
-          <span class="btag"><i></i>PyTorch</span><span class="btag"><i></i>scikit-learn</span><span class="btag"><i></i>RAG</span><span class="btag"><i></i>LLMs</span><span class="btag"><i></i>Prompt Engineering</span><span class="btag"><i></i>ONNX</span>
+          <span class="btag"><i></i>AI Agents</span><span class="btag"><i></i>LangChain</span><span class="btag"><i></i>LangGraph</span><span class="btag"><i></i>RAG</span><span class="btag"><i></i>MCP</span><span class="btag"><i></i>NLP</span><span class="btag"><i></i>PyTorch</span><span class="btag"><i></i>scikit-learn</span><span class="btag"><i></i>Claude Code</span>
         </div>
       </div>
 
@@ -270,7 +291,7 @@
         <div class="bento-icon">◇</div>
         <h3>Web &amp; Frameworks</h3>
         <div class="bento-tags">
-          <span class="btag"><i></i>React</span><span class="btag"><i></i>Next.js</span><span class="btag"><i></i>Angular</span><span class="btag"><i></i>Flutter</span><span class="btag"><i></i>.NET MVC</span><span class="btag"><i></i>Spring Boot</span><span class="btag"><i></i>FastAPI</span><span class="btag"><i></i>Node.js</span><span class="btag"><i></i>REST APIs</span>
+          <span class="btag"><i></i>React</span><span class="btag"><i></i>Next.js</span><span class="btag"><i></i>Angular</span><span class="btag"><i></i>Flutter</span><span class="btag"><i></i>.NET MVC</span><span class="btag"><i></i>Spring Boot</span><span class="btag"><i></i>FastAPI</span><span class="btag"><i></i>Node.js</span><span class="btag"><i></i>REST APIs</span><span class="btag"><i></i>Microservices</span><span class="btag"><i></i>RabbitMQ</span>
         </div>
       </div>
 
@@ -278,7 +299,7 @@
         <div class="bento-icon">▲</div>
         <h3>Cloud &amp; Practices</h3>
         <div class="bento-tags">
-          <span class="btag"><i></i>AWS</span><span class="btag"><i></i>Docker</span><span class="btag"><i></i>Kubernetes</span><span class="btag"><i></i>CI/CD</span><span class="btag"><i></i>Git</span><span class="btag"><i></i>Agile/Scrum</span>
+          <span class="btag"><i></i>AWS</span><span class="btag"><i></i>Docker</span><span class="btag"><i></i>Kubernetes</span><span class="btag"><i></i>CI/CD</span><span class="btag"><i></i>Git</span><span class="btag"><i></i>Linux</span><span class="btag"><i></i>Pytest</span><span class="btag"><i></i>JUnit</span><span class="btag"><i></i>Agile/Scrum</span>
         </div>
       </div>
     </div>
